@@ -1,72 +1,62 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GJ_LoadTerrain : MonoBehaviour {
+public class GJ_LoadTerrain : MonoBehaviour
+{
 
-		private enum TERRAIN_TYPE {
-				SEA,
-				BORDER, 
-				ATTRACTION, 
-				WALKWAY
+		private enum TERRAIN_TYPE
+		{
+				FREE,
+				OCCUPIED,
+				WATER
 		}
 
-		private int terrain_Size = 100 ;
-		private TERRAIN_TYPE[,] Terrain ; 
-
-		[SerializeField] private GameObject[] terrain_Sprite ;
-
-		private void Awake() {
-
-				Terrain = new TERRAIN_TYPE[terrain_Size,terrain_Size];
+		private static GJ_LoadTerrain _instance ;
+		public static GJ_LoadTerrain Instance {
+				get {
+						return _instance ;
+				}
 		}
 
+		private int terrain_Height = 7;
+		private int terrain_Width = 15;
+		private TERRAIN_TYPE[,] Terrain;
 
+
+
+		private void Awake () {
+				_instance = this ;
+		}
 
 		// Use this for initialization
-		void Start () {
-				Debug.Log("Starting") ;
-				Init_DefaultTerrain() ;
-
-				Load_NewTerrain() ;
+		void Start ()
+		{
+				Debug.Log ("Starting");
+				Init_DefaultTerrain ();
 		}
 
+		private void Init_DefaultTerrain ()
+		{
+				Terrain = new TERRAIN_TYPE[terrain_Width, terrain_Height];
 
-
-
-		private void Load_NewTerrain () {
-				Vector2 tPos = Vector2.zero ;
-
-				for( int i=0; i<terrain_Size ; i++ ) {
-						for(int j=0; j<terrain_Size; j++ ){
-								tPos.x = i; tPos.y = j ;
-								Instantiate_SpriteAt( Terrain[i,j], tPos );
+				for (int i = 0; i < terrain_Width; i++) {
+						for (int j = 0; j < terrain_Height; j++) {
+								Terrain [i, j] = TERRAIN_TYPE.FREE;
 						}
 				}
 		}
 
-		private void Init_DefaultTerrain() {
-				for( int i=0; i<terrain_Size ; i++ ) {
-						for(int j=0; j<terrain_Size; j++ ){
-								Terrain[i,j] = TERRAIN_TYPE.SEA ;
-						}
+		public bool Check_IfSpaceAvailable_ForAttraction (int size, int posX, int posY)
+		{
+
+				if( posX< 0 || posY<0 ){
+						return false ;
 				}
+				if (Terrain [posX, posY] != TERRAIN_TYPE.FREE) {
+						return false;
+				}
+				return true;
 		}
 
-		private void Instantiate_SpriteAt( TERRAIN_TYPE spriteType, Vector2 pos ){
-				int type = -1 ;
-
-				// We need to recenter everything 
-				pos.x -= terrain_Size/2 ;;
-				pos.y -= terrain_Size/2;
-
-				// Which type to instantiate
-				switch( spriteType ){
-				case TERRAIN_TYPE.SEA : type = 0  ; break ;
-				default : Debug.LogError( "LoadTerrain : You suck massive ball mate. " + pos.x +""+ pos.y);
-						return ;
-				}
-
-				Instantiate( terrain_Sprite[type], pos, Quaternion.identity );
-		}
 				
 }
