@@ -32,6 +32,8 @@ public class GJ_ManageBuilding : MonoBehaviour
 
 		private void Init_DefaultTerrain ()
 		{
+				solver = new PierPathSolver() ;
+
 				Terrain = new PierPathSolver.NodeType[terrain_Width, terrain_Height];
 				Terrain [exitOne.x, exitOne.y] = PierPathSolver.NodeType.END;
 				Terrain [exitTwo.x, exitTwo.y] = PierPathSolver.NodeType.END;
@@ -84,7 +86,7 @@ public class GJ_ManageBuilding : MonoBehaviour
 				if( index_H >= terrain_Height || index_H <0  )
 						return false ;
 
-				if( Terrain[index_W, index_H] != TERRAIN_TYPE.FREE) return false ;
+				if( Terrain[index_W, index_H] != PierPathSolver.NodeType.FREE) return false ;
 				else return true ;
 		}
 				
