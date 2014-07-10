@@ -54,17 +54,13 @@ public class GJ_Client : MonoBehaviour {
 				case STATE.NEW : return ;
 
 				case STATE.IDLE :
-						FindNew_Objective() ;
 						break ;
 				case STATE.MOVING :
 						break ;
 				}
 			
 	}
-				
-		private IEnumerator COROUTINE_TranslateCharacter( ) {
 
-		}
 
 		private Vector3 tempPos ;
 

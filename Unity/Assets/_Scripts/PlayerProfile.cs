@@ -1,44 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerProfile : MonoBehaviour 
+public class PlayerProfile
 {
-	private static PlayerProfile _instance ;
-	public static PlayerProfile Instance 
-	{
-		get 
-		{
-			return _instance ;
-		}
-	}		
-	private void Awake () 
-	{			
-		_instance = this ;
-	}
+		private static PlayerProfile _instance;
 
-	private uint score = 0;
-	public uint Score
-	{
-		get 
-		{
-			return score;
+		public static PlayerProfile Instance {
+				get {
+			
+						if (_instance == null) {
+								_instance = new PlayerProfile ();
+						}
+						return _instance;
+				}
 		}
-		set
-		{
-			score = value;
-		}
-	}
 
-	private uint money = 0;
-	public uint Money
-	{
-		get 
-		{
-			return money;
+		private void Awake ()
+		{			
+				_instance = this;
 		}
-		set
-		{
-			money = value;
+
+		private int  score = 5000;
+
+		public int Score {
+				get {
+						return score;
+				}
+				set {
+						score = value;
+				}
 		}
-	}
+
+		private int money = 5000;
+
+		public int Money {
+				get {
+						return money;
+				}
+				set {
+						money = value;
+				}
+		}
 }

@@ -10,7 +10,5 @@ public class BTN_Building : MonoBehaviour {
 				if( !isPressed ) 
 						GJ_AddBuilding.is_enabled = true ;
 
-				Debug.Log(isPressed);
-
 		}
 }
