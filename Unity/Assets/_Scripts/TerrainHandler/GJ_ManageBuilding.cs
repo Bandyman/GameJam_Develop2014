@@ -50,7 +50,6 @@ public class GJ_ManageBuilding : MonoBehaviour
 
 		public bool Check_IfSpaceAvailable_ForAttraction (int size, int posX, int posY)
 		{
-				Debug.Log( "Checking at " + posX + "-"+posY + " :: "+size );
 				if( posX< 0 || posY<0  || posX>terrain_Width || posY>terrain_Height){
 						return false ;
 				}
@@ -62,11 +61,9 @@ public class GJ_ManageBuilding : MonoBehaviour
 
 								if (Terrain [posX + i, posY+j] != TERRAIN_TYPE.FREE) {
 										return false ;
-										Debug.Log("Nope can't build you shihead");
 								}
 						}
 				}
-				Debug.Log("Yup okay, you can build homie");
 				return true;
 		}
 
@@ -80,6 +77,16 @@ public class GJ_ManageBuilding : MonoBehaviour
 								Terrain [posX + i, posY+j] = TERRAIN_TYPE.OCCUPIED  ;
 						}
 				}
+		}
+
+		public bool Check_IfCanMove ( int index_W, int index_H){
+				if( index_W >= terrain_Width || index_W < 0 )
+						return false ;
+				if( index_H >= terrain_Height || index_H <0  )
+						return false ;
+
+				if( Terrain[index_W, index_H] != TERRAIN_TYPE.FREE) return false ;
+				else return true ;
 		}
 				
 }
