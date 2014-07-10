@@ -23,7 +23,7 @@ public class PierPathSolver : MonoBehaviour
 		OCCUPIED = 255
 	}
 
-	private IntVector2 startPosition;// = new IntVector2(0, 0); /* x,y */
+	private IntVector2 startPosition = new IntVector2(0, 0); /* x,y */
 	public IntVector2 StartPosition
 	{
 		set

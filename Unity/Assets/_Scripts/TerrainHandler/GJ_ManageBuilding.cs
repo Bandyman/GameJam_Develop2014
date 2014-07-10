@@ -15,6 +15,7 @@ public class GJ_ManageBuilding : MonoBehaviour
 		private IntVector2 exitOne = new IntVector2(3,0);
 		private IntVector2 exitTwo = new IntVector2(4,0);
 		private PierPathSolver.NodeType[,] Terrain;
+        private PierPathSolver solver;
 	
 		private void Awake () {
 				_instance = this ;
@@ -40,6 +41,8 @@ public class GJ_ManageBuilding : MonoBehaviour
 						Terrain [i, j] = PierPathSolver.NodeType.FREE;
 						}
 				}
+                
+                solver.Tiles = Terrain;
 		}
 
 		public bool Check_IfSpaceAvailable_ForAttraction (int size, int posX, int posY)
@@ -74,6 +77,8 @@ public class GJ_ManageBuilding : MonoBehaviour
 						Terrain [posX + i, posY+j] = PierPathSolver.NodeType.OCCUPIED;
 						}
 				}
+                
+                solver.Tiles = Terrain;
 		}
 				
 }
