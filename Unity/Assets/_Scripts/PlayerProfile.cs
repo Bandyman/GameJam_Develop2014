@@ -31,7 +31,7 @@ public class PlayerProfile
 				}
 		}
 
-		private int money = 5000;
+		private int money = 10000;
 
 		public int Money {
 				get {
