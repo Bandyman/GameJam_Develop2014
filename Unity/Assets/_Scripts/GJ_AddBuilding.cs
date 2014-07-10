@@ -117,6 +117,8 @@ public class GJ_AddBuilding : MonoBehaviour
 				DummyRectangle.SetActive( false ) ;
 				Instantiate( listPrefabs[currentReference], currentPosition, Quaternion.identity );
 				GJ_ManageBuilding.Instance.Update_MapOfBuildings_ForAttraction(listBuildings[currentReference].size,(int)currentPosition.x, (int)currentPosition.z);
+				GJ_AI.Instance.Update_ExcitmentMap( (int)currentPosition.x, (int)currentPosition.z, listBuildings[currentReference].excitment );
+				GJ_AI.Instance.Print_Table() ;
 				current =  PHASE.IDLE ;
 				currentReference = -1 ;
 				UIController.Update_UI() ;

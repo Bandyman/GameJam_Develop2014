@@ -3,14 +3,6 @@ using System.Collections;
 
 public class GJ_ManageBuilding : MonoBehaviour
 {
-
-		private enum TERRAIN_TYPE
-		{
-				FREE,
-				OCCUPIED,
-				WATER
-		}
-
 		private static GJ_ManageBuilding _instance ;
 		public static GJ_ManageBuilding Instance {
 				get {
@@ -20,10 +12,11 @@ public class GJ_ManageBuilding : MonoBehaviour
 
 		public static int terrain_Height = 12;
 		public static int terrain_Width = 8;
-		private TERRAIN_TYPE[,] Terrain;
-
-
-
+		private IntVector2 exitOne = new IntVector2(3,0);
+		private IntVector2 exitTwo = new IntVector2(4,0);
+		private PierPathSolver.NodeType[,] Terrain;
+        private PierPathSolver solver;
+	
 		private void Awake () {
 				_instance = this ;
 		}
@@ -39,18 +32,23 @@ public class GJ_ManageBuilding : MonoBehaviour
 
 		private void Init_DefaultTerrain ()
 		{
-				Terrain = new TERRAIN_TYPE[terrain_Width, terrain_Height];
+				solver = new PierPathSolver() ;
+
+				Terrain = new PierPathSolver.NodeType[terrain_Width, terrain_Height];
+				Terrain [exitOne.x, exitOne.y] = PierPathSolver.NodeType.END;
+				Terrain [exitTwo.x, exitTwo.y] = PierPathSolver.NodeType.END;
 
 				for (int i = 0; i < terrain_Width; i++) {
 						for (int j = 0; j < terrain_Height; j++) {
-								Terrain [i, j] = TERRAIN_TYPE.FREE;
+						Terrain [i, j] = PierPathSolver.NodeType.FREE;
 						}
 				}
+                
+                solver.Tiles = Terrain;
 		}
 
 		public bool Check_IfSpaceAvailable_ForAttraction (int size, int posX, int posY)
 		{
-				Debug.Log( "Checking at " + posX + "-"+posY + " :: "+size );
 				if( posX< 0 || posY<0  || posX>terrain_Width || posY>terrain_Height){
 						return false ;
 				}
@@ -60,13 +58,11 @@ public class GJ_ManageBuilding : MonoBehaviour
 										return false ;
 								}
 
-								if (Terrain [posX + i, posY+j] != TERRAIN_TYPE.FREE) {
+								if (Terrain [posX + i, posY+j] != PierPathSolver.NodeType.FREE) {
 										return false ;
-										Debug.Log("Nope can't build you shihead");
 								}
 						}
 				}
-				Debug.Log("Yup okay, you can build homie");
 				return true;
 		}
 
@@ -77,9 +73,21 @@ public class GJ_ManageBuilding : MonoBehaviour
 				}
 				for( int i=0; i< size ; i++ ){
 						for( int j=0; j<size; j++ ){
-								Terrain [posX + i, posY+j] = TERRAIN_TYPE.OCCUPIED  ;
+						Terrain [posX + i, posY+j] = PierPathSolver.NodeType.OCCUPIED;
 						}
 				}
+                
+                solver.Tiles = Terrain;
+		}
+
+		public bool Check_IfCanMove ( int index_W, int index_H){
+				if( index_W >= terrain_Width || index_W < 0 )
+						return false ;
+				if( index_H >= terrain_Height || index_H <0  )
+						return false ;
+
+				if( Terrain[index_W, index_H] != PierPathSolver.NodeType.FREE) return false ;
+				else return true ;
 		}
 				
 }

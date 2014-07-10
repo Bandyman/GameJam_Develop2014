@@ -18,12 +18,12 @@ public class PierPathSolver : MonoBehaviour
 {
 	public enum NodeType
 	{
-		OK = 1,
+		FREE = 1,
 		END = 1001,
-		WALL = 255
+		OCCUPIED = 255
 	}
 
-	private IntVector2 startPosition;// = new IntVector2(0, 0); /* x,y */
+	private IntVector2 startPosition = new IntVector2(0, 0); /* x,y */
 	public IntVector2 StartPosition
 	{
 		set
@@ -32,7 +32,7 @@ public class PierPathSolver : MonoBehaviour
 		}
 	}
 
-	private uint[,] tiles;/*new uint[6,5] { 
+	private NodeType[,] tiles;/*new uint[6,5] { 
 		{1, 255, 1, 1, 1 },
 		{1, 255, 1, 1, 1 },
 		{1, 255, 1, 255, 1 },
@@ -40,7 +40,7 @@ public class PierPathSolver : MonoBehaviour
 		{1, 255, 1, 255, (uint)NodeType.END },
 		{1, 1, 1, 1, 255 }
 	};*/
-	public uint[,] Tiles 
+	public NodeType[,] Tiles 
 	{
 		set 
 		{
@@ -72,7 +72,7 @@ public class PierPathSolver : MonoBehaviour
 		if (node.x < (tiles.GetLength (0) - 1))
 		{
 			IntVector2 downNode = new IntVector2(node.x + 1, node.y);
-			if (tiles[downNode.x, downNode.y] != (uint)NodeType.WALL)
+			if (tiles[downNode.x, downNode.y] != NodeType.OCCUPIED)
 			{
 				adjNodes.Add(downNode);
 			}
@@ -80,7 +80,7 @@ public class PierPathSolver : MonoBehaviour
 		if (node.x > 0)
 		{
 			IntVector2 upNode = new IntVector2(node.x - 1, node.y);
-			if (tiles[upNode.x, upNode.y] != (uint)NodeType.WALL)
+			if (tiles[upNode.x, upNode.y] != NodeType.OCCUPIED)
 			{
 				adjNodes.Add(upNode);
 			}
@@ -88,7 +88,7 @@ public class PierPathSolver : MonoBehaviour
 		if (node.y < (tiles.GetLength (1) - 1))
 		{
 			IntVector2 rightNode = new IntVector2(node.x, node.y + 1);
-			if (tiles[rightNode.x, rightNode.y] != (uint)NodeType.WALL)
+			if (tiles[rightNode.x, rightNode.y] != NodeType.OCCUPIED)
 			{
 				adjNodes.Add(rightNode);
 			}
@@ -96,7 +96,7 @@ public class PierPathSolver : MonoBehaviour
 		if (node.y > 0)
 		{
 			IntVector2 leftNode = new IntVector2(node.x, node.y - 1);
-			if (tiles[leftNode.x, leftNode.y] != (uint)NodeType.WALL)
+			if (tiles[leftNode.x, leftNode.y] != NodeType.OCCUPIED)
 			{
 				adjNodes.Add(leftNode);
 			}
@@ -118,7 +118,7 @@ public class PierPathSolver : MonoBehaviour
 
 	public Theodis.Algorithm.FinishedFlags IsFinished(IntVector2 node, double g)
 	{
-		if (tiles [node.x, node.y] == (uint)NodeType.END) 
+		if (tiles [node.x, node.y] == NodeType.END) 
 		{
 			return Theodis.Algorithm.FinishedFlags.FINISHED;
 		}

@@ -4,7 +4,7 @@ using System.Collections;
 [System.Serializable]
 public class Boundary
 {
-	public float xMin, xMax, zMin, zMax;
+	public float xMin = -5, xMax=2, zMin =2 , zMax=-12;
 }
 
 public class CameraMover : MonoBehaviour
@@ -14,8 +14,8 @@ public class CameraMover : MonoBehaviour
 	
 	void Update ()
 	{
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		float moveVertical = Input.GetAxis ("Vertical");
+				float moveHorizontal = Input.GetAxis ("Vertical");
+				float moveVertical = -Input.GetAxis ("Horizontal");
 	
 		float step = speed * Time.deltaTime;
 
