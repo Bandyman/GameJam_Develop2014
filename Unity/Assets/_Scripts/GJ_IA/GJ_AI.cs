@@ -130,7 +130,83 @@ public class GJ_AI {
 
 		}
 	
+		public bool Check_ForAttractions(int currentPos_W, int currentPos_H){
+				bool val = false ;
+				// LEFT
+				if( !GJ_ManageBuilding.Instance.Check_IfCanMove(currentPos_W, currentPos_H+1) ){
+						if( currentPos_H+1 < GJ_ManageBuilding.terrain_Height ){
+								val = true ;
+						}
+				}
+				if( !GJ_ManageBuilding.Instance.Check_IfCanMove(currentPos_W, currentPos_H-1) ){
+						if( currentPos_H-1 >=0 ){
+								val = true ;
+						}
+				}
+				if( !GJ_ManageBuilding.Instance.Check_IfCanMove(currentPos_W+1, currentPos_H) ){
+						if( currentPos_W+1 < GJ_ManageBuilding.terrain_Width ){
+								val = true ;
+						}
+				}
+				if( !GJ_ManageBuilding.Instance.Check_IfCanMove(currentPos_W-1, currentPos_H) ){
+						if( currentPos_W-1 >= 0 ){
+								val = true ;
+						}
+				}
+				return val ;
+		} 
+
 		public DIRECTION Get_NewDirection (int currentPos_W, int currentPos_H ) {
+				DIRECTION best = DIRECTION.LEFT ;
+				int bestVal = 0 ;
+				bool found = false ;
+
+				// LEFT
+				if( GJ_ManageBuilding.Instance.Check_IfCanMove(currentPos_W, currentPos_H+1) ){
+
+						if( excitmentMap[currentPos_W, currentPos_H+1] > bestVal ){
+								bestVal = excitmentMap[currentPos_W, currentPos_H+1] ;
+								best = DIRECTION.LEFT;
+								found = true ;
+						}
+				}
+
+				//RIGHT 
+				if( GJ_ManageBuilding.Instance.Check_IfCanMove(currentPos_W, currentPos_H-1) ){
+						if( excitmentMap[currentPos_W, currentPos_H-1] > bestVal ){
+								bestVal = excitmentMap[currentPos_W, currentPos_H-1] ;
+								best = DIRECTION.RIGHT;
+								found = true ;
+						}
+				}
+
+				//UP 
+				if( GJ_ManageBuilding.Instance.Check_IfCanMove(currentPos_W+1, currentPos_H) ){
+						if( excitmentMap[currentPos_W+1, currentPos_H] > bestVal ){
+								bestVal = excitmentMap[currentPos_W+1, currentPos_H] ;
+								best = DIRECTION.UP ;
+								found = true ;
+						}
+				}
+
+				// DOWN
+				if( GJ_ManageBuilding.Instance.Check_IfCanMove(currentPos_W-1, currentPos_H) ){
+						if( excitmentMap[currentPos_W-1, currentPos_H] > bestVal ){
+								bestVal = excitmentMap[currentPos_W-1, currentPos_H] ;
+								best = DIRECTION.DOWN ;
+								found = true ;
+						}
+				}
+
+				if( !found )
+						return GetRandom () ;
+
+				return best ;
+		}
+
+
+
+		public DIRECTION Get_NewDirectionLEAVING (int currentPos_W, int currentPos_H ) {
 				DIRECTION best = DIRECTION.LEFT ;
 				int bestVal = 0 ;
 				Debug.Log( "New check");
@@ -138,41 +214,48 @@ public class GJ_AI {
 				// LEFT
 				if( GJ_ManageBuilding.Instance.Check_IfCanMove(currentPos_W, currentPos_H+1) ){
 
-						Debug.Log( "LEFT " + excitmentMap[currentPos_W, currentPos_H+1]);
 						if( excitmentMap[currentPos_W, currentPos_H+1] > bestVal ){
-								bestVal = excitmentMap[currentPos_W, currentPos_H+1] ;
+								bestVal = shortestDistance[currentPos_W, currentPos_H+1] ;
 								best = DIRECTION.LEFT;
 						}
 				}
 
 				//RIGHT 
 				if( GJ_ManageBuilding.Instance.Check_IfCanMove(currentPos_W, currentPos_H-1) ){
-						Debug.Log( "RIGHT " + excitmentMap[currentPos_W, currentPos_H-1]);
 						if( excitmentMap[currentPos_W, currentPos_H-1] > bestVal ){
-								bestVal = excitmentMap[currentPos_W, currentPos_H-1] ;
+								bestVal = shortestDistance[currentPos_W, currentPos_H-1] ;
 								best = DIRECTION.RIGHT;
 						}
 				}
 
 				//UP 
 				if( GJ_ManageBuilding.Instance.Check_IfCanMove(currentPos_W+1, currentPos_H) ){
-						Debug.Log( "UP " + excitmentMap[currentPos_W+1, currentPos_H]);
 						if( excitmentMap[currentPos_W+1, currentPos_H] > bestVal ){
-								bestVal = excitmentMap[currentPos_W+1, currentPos_H] ;
+								bestVal = shortestDistance[currentPos_W+1, currentPos_H] ;
 								best = DIRECTION.UP ;
 						}
 				}
 
 				// DOWN
 				if( GJ_ManageBuilding.Instance.Check_IfCanMove(currentPos_W-1, currentPos_H) ){
-						Debug.Log( "DOWN " + excitmentMap[currentPos_W-1, currentPos_H]);
 						if( excitmentMap[currentPos_W-1, currentPos_H] > bestVal ){
-								bestVal = excitmentMap[currentPos_W-1, currentPos_H] ;
+								bestVal = shortestDistance[currentPos_W-1, currentPos_H] ;
 								best = DIRECTION.DOWN ;
 						}
 				}
 
-
 				return best ;
+		}
+
+		private DIRECTION GetRandom () {
+				int v = Random.Range(0,3) ;
+				switch(v){
+				case 0 : 
+						return DIRECTION.LEFT ;
+				case 1 : return DIRECTION.RIGHT ;
+				case 2 : return DIRECTION.UP;
+				case 3 : return DIRECTION.DOWN ;
+				}
+				return DIRECTION.RIGHT ;
 		}
 }

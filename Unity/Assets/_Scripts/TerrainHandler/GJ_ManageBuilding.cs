@@ -86,8 +86,9 @@ public class GJ_ManageBuilding : MonoBehaviour
 				if( index_H >= terrain_Height || index_H <0  )
 						return false ;
 
-				if( Terrain[index_W, index_H] != PierPathSolver.NodeType.FREE) return false ;
-				else return true ;
+				if( Terrain[index_W, index_H] == PierPathSolver.NodeType.FREE
+						|| Terrain[index_W, index_H] == PierPathSolver.NodeType.END ) return true ;
+				else return false ;
 		}
 				
 }

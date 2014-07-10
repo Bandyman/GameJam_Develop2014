@@ -18,6 +18,8 @@ public class UI_Manager : MonoBehaviour
 		[SerializeField] private GameObject SubMenu_Buying ;
 		[SerializeField] private GameObject SubMenu_Main ;
 
+		[SerializeField] private GameObject StartButton ;
+
 		[SerializeField] private UILabel moneyLabel ;
 		[SerializeField] private UILabel warningLabel ;
 
@@ -26,6 +28,7 @@ public class UI_Manager : MonoBehaviour
 		[SerializeField] private UILabel _lablMoneyMade ;
 		[SerializeField] private UILabel _lablFunValue ;
 
+		[SerializeField] private GameObject _Ghosts ;
 
 		public void BTNPressed_Building_1 ()
 		{
@@ -43,6 +46,10 @@ public class UI_Manager : MonoBehaviour
 				is_3DUIEnabled = !SubMenu_Building.activeSelf ;
 		}
 
+		public void BTNPressed_START () {
+				StartButton.SetActive( false ) ;
+				_Ghosts.SetActive( true ) ;
+		}
 
 
 
