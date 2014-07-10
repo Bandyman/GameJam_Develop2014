@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7e4c9ab05e1a6494f9ef9032cbc8b200
+guid: 3ffce0e2e3e77b6458152031eade3105
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -71,7 +71,7 @@ ModelImporter:
     4300022: Sphere.001
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -88,7 +88,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: .00999999978
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

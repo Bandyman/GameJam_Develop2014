@@ -39,6 +39,18 @@ public class UI_Manager : MonoBehaviour
 		{
 				PressButton_Index (1);
 		}
+		public void BTNPressed_Building_3 ()
+		{
+				PressButton_Index (2);
+		}
+		public void BTNPressed_Building_4 ()
+		{
+				PressButton_Index (3);
+		}
+		public void BTNPressed_Building_5 ()
+		{
+				PressButton_Index (4);
+		}
 
 		public void BTNPressed_OpenEditMenu ()
 		{

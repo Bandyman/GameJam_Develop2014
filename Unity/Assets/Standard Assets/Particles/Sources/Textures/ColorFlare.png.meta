@@ -35,6 +35,10 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
+<<<<<<< HEAD
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+=======
+>>>>>>> 228f6cb95871aea72152eca21bc2bb3dd49264aa
   spritePixelsToUnits: 100
   alphaIsTransparency: 0
   textureType: -1

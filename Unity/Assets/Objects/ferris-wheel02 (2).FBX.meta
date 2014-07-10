@@ -1,0 +1,217 @@
+fileFormatVersion: 2
+guid: de9c7e5de51424942b6da20fcdd3334b
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Cylinder006
+    100002: Cylinder007
+    100004: Cylinder008
+    100006: Cylinder009
+    100008: Cylinder010
+    100010: Ferris-wheel
+    100012: //RootNode
+    100014: Sphere020
+    100016: Sphere021
+    100018: Sphere022
+    100020: Sphere023
+    100022: Sphere024
+    100024: Sphere025
+    100026: Sphere026
+    100028: Sphere027
+    100030: Sphere028
+    100032: Sphere029
+    100034: Sphere030
+    100036: Sphere031
+    400000: Cylinder006
+    400002: Cylinder007
+    400004: Cylinder008
+    400006: Cylinder009
+    400008: Cylinder010
+    400010: Ferris-wheel
+    400012: //RootNode
+    400014: Sphere020
+    400016: Sphere021
+    400018: Sphere022
+    400020: Sphere023
+    400022: Sphere024
+    400024: Sphere025
+    400026: Sphere026
+    400028: Sphere027
+    400030: Sphere028
+    400032: Sphere029
+    400034: Sphere030
+    400036: Sphere031
+    2300000: Cylinder006
+    2300002: Cylinder007
+    2300004: Cylinder008
+    2300006: Cylinder009
+    2300008: Cylinder010
+    2300010: Ferris-wheel
+    2300012: Sphere020
+    2300014: Sphere021
+    2300016: Sphere022
+    2300018: Sphere023
+    2300020: Sphere024
+    2300022: Sphere025
+    2300024: Sphere026
+    2300026: Sphere027
+    2300028: Sphere028
+    2300030: Sphere029
+    2300032: Sphere030
+    2300034: Sphere031
+    3300000: Cylinder006
+    3300002: Cylinder007
+    3300004: Cylinder008
+    3300006: Cylinder009
+    3300008: Cylinder010
+    3300010: Ferris-wheel
+    3300012: Sphere020
+    3300014: Sphere021
+    3300016: Sphere022
+    3300018: Sphere023
+    3300020: Sphere024
+    3300022: Sphere025
+    3300024: Sphere026
+    3300026: Sphere027
+    3300028: Sphere028
+    3300030: Sphere029
+    3300032: Sphere030
+    3300034: Sphere031
+    4300000: Cylinder006
+    4300002: Ferris-wheel
+    4300004: Sphere020
+    4300006: Sphere021
+    4300008: Sphere022
+    4300010: Sphere023
+    4300012: Sphere024
+    4300014: Sphere025
+    4300016: Sphere026
+    4300018: Sphere027
+    4300020: Sphere028
+    4300022: Sphere029
+    4300024: Sphere030
+    4300026: Sphere031
+    4300028: Cylinder007
+    4300030: Cylinder008
+    4300032: Cylinder009
+    4300034: Cylinder010
+    7400000: ferris wheel
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: ferris wheel
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Cylinder006
+        weight: 1
+      - path: Cylinder007
+        weight: 1
+      - path: Cylinder008
+        weight: 1
+      - path: Cylinder009
+        weight: 1
+      - path: Cylinder010
+        weight: 1
+      - path: Ferris-wheel
+        weight: 1
+      - path: Ferris-wheel/Sphere020
+        weight: 1
+      - path: Ferris-wheel/Sphere021
+        weight: 1
+      - path: Ferris-wheel/Sphere022
+        weight: 1
+      - path: Ferris-wheel/Sphere023
+        weight: 1
+      - path: Ferris-wheel/Sphere024
+        weight: 1
+      - path: Ferris-wheel/Sphere025
+        weight: 1
+      - path: Ferris-wheel/Sphere026
+        weight: 1
+      - path: Ferris-wheel/Sphere027
+        weight: 1
+      - path: Ferris-wheel/Sphere028
+        weight: 1
+      - path: Ferris-wheel/Sphere029
+        weight: 1
+      - path: Ferris-wheel/Sphere030
+        weight: 1
+      - path: Ferris-wheel/Sphere031
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .100000001
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
